@@ -1,3 +1,13 @@
+/*
+color palette 7-class YlGn from colorbrewer2.org.
+#ffffcc - lightest
+#d9f0a3 - second lightest green
+#addd8e
+#78c679
+#41ab5d - emerald
+#238443 - kelly
+#005a32 - darkest green
+*/
 body {
  background-color: #d9f0a3;
  color: #005a32;
