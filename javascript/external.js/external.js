@@ -1,4 +1,4 @@
-document.writeln("<button onclick='condition()'>Conditional Test</button>");
+/document.writeln("<button onclick='condition()'>Conditional Test</button>");
 function condition()
 {
   x = confirm("Are you sure you want to proceed?");
@@ -10,4 +10,4 @@ function condition()
   {
     document.writeln("You chose Cancel!");
   }
-} 
+}
