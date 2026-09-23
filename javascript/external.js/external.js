@@ -47,3 +47,20 @@ document.write("</tr>");
 document.write("</table>");
 return "";
 }
+const reviews = [
+  {
+    name: "Oil Spill Toolkit",
+    url: "https://www.glo.texas.gov",
+    description:
+      "The Oil Spill Toolkit developed by Enterprise Technology Solutions of the Texas General Land Office is a decision-support resource. " +
+      "This is my second sentence about the Oil Spill Toolkit. " +
+      "This is my third sentence about the Oil Spill Toolkit. " +
+      "This is my fourth sentence about the Oil Spill Toolkit."
+  },
+  {
+    name: "Texas Ecosystems Analytical Mapper",
+    url: "http://tpwd.texas.gov/gis/team/",
+    description:
+      "The Texas Parks and Wildlife's Landscape Ecology program is great."
+  }
+];
