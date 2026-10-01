@@ -1,5 +1,5 @@
 
- //document.write(user_name);
+ document.write(user_name);
 
 function welcome() {
   let a = "Please enter your name.";
