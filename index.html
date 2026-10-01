@@ -1,89 +1,111 @@
 <!doctype html>
 <html>
-<script src="javascript/extern.js"></script>
 <head>
-    <meta charset="utf-8"> <meta name = "viewport" content = "width=device-width, initial- scale=1.0" /> <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""> <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
-    <script src="javascript/secret_keys.js"></script>
-  <title>Kat Venezia</title>
-  <!-- All Styling for this HTML document are contained in this external css
-  file -->
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css">
+<script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="css/main_style.css">
-</head>
+<script src="javascript/secret_keys.js"></script>
+<meta charset="utf-8">
+<meta name = "viewport" content = "width=device-width, initial- scale=1.0" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="">
+<link rel="stylesheet" type="text/css" href="css/map_style.css">
+<script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js" integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s=" crossorigin=""></script>
+ <title>Kat Venezia</title>
+ <!-- All Styling for this HTML document are contained in this external css
+ file -->
+ <link rel="stylesheet" type="text/css" href="css/main_style.css">
+ </head>
 <body>
-  <div>
-</div>
   <div id="body-container">
     <div id="header">
+
       <script src="javascript/extern.js"></script>
       <script>
        document.write(welcome());
      </script>
-      <h1 id="greeting"></h1>
-<!--<script>
-   const username = prompt("Please enter your name", "Type your name here");
-   document.getElementById("greeting").textContent =
-     `Hello, welcome to my webpage, ${username}!`;
-</script>-->
-  </div>
-  <div id="profile-picture">
-   <img src=images/Profile-Picture.jpg  width=250px height=350px />
-   <p> Hi everyone! This is me!</p>
- </div>
- <div id="welcome-text">
-   <p>
-     My name is Kat Venezia. <br>
-     I am a student in the
-     <a href="https://www.geo.txstate.edu/" target="_blank"> Geography Department</a> at
-     <a href="https://www.txst.edu/" target="_blank">Texas State University</a>.</p>
-    <p>
- </div>
-<div id="research-interests">
-   <p>
-     <h3>Research Interests: </h3>
-     <ol>
-      <li>GIS</li>
-      <li>Resource Management</li>
-      <li>Climatology</li>
-      <li>Meteorology</li>
-      <li>Community and Regional Planning</li>
-     </ol>
-   </p>
-</div>
-<div id="webmap-reviews">
-<p>
-<h3>Webmap Reviews</h3>
-  <script>
-  document.write(webmap_table());
-  </script>
-</p>
-</div>
 
-<h3>Geocoding Map</h3>
-<script src="javascript/secret_keys.js"></script>
- <br>
-  <div id="mapid" style="width: 600px; height: 400px; margin: auto; bottom: 30px;">
+    </div>
 
-     <script>
-      var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={pk.eyJ1Ijoia2NqNjgiLCJhIjoiY211b2tpbjJiMDRsdjJ4b2N1YTJ1NnVwNSJ9.5rqgfzuhpehv5NLbUJvTfA}',
-       {maxZoom: 18, id: 'mapbox.mapbox-traffic-v1',
-        accessToken: "pk.eyJ1Ijoia2NqNjgiLCJhIjoiY211b2tpbjJiMDRsdjJ4b2N1YTJ1NnVwNSJ9.5rqgfzuhpehv5NLbUJvTfA"}).addTo(mymap);
+    <div id="profile-picture">
+      <img src=images/Profile-Picture.jpg width=250px height=250px />
+       <p>This is me!</p>
+    </div>
+
+    <div id="welcome-text">
+      <p>My name is Kat Venezia<br>
+        I am a student in the
+        <a href="https://www.geo.txstate.edu/" target="_blank">Department of Geography and Envrionmental Studies</a> at
+        <a href="https://www.txst.edu/" target="_blank"> Texas State University.</a>
+      </p>
+
+      <div id="research-interests">
+        <p>
+          <h3>Research Interests: </h3>
+          <ol>
+            <li>GIS</li>
+            <li>Remote Sensing</li>
+            <li>Human Mobility</li>
+          </ol>
+        </p>
+      </div>
+      <div id="webmap-reviews">
+        <p>
+          <h3>Webmap Reviews</h3>
+          <script>
+          document.write(webmap_table());
+          </script>
+        </p>
+
+      </div>
+      <h3>Geocoding Map</h3>
+      <br>
+      <div id="mapid" style="width: 600px; height: 400px; margin: auto; bottom: 30px;">
+        <script>
+        var mymap = L.map('mapid');
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {maxZoom: 18, id: 'mapbox/dark-v10', accessToken: mapbox_access_token}).addTo(mymap);
+
+        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+        var circle = L.circle([51.508, -0.11], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        var polygon = L.polygon([[51.509, -0.08], [51.503, -0.06], [51.51, -0.047]]).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        circle.bindPopup("I am a circle.");
+        polygon.bindPopup("I am a polygon.");
+        marker.on('click', function(e){ mymap.setView(e.latlng, 14);})
+        circle.on('click', function(e){ mymap.setView(e.latlng, 13);})
+        polygon.on('click', function(e){ mymap.setView(e.latlng, 13);})
+        var ZoomViewer = L.Control.extend({ onAdd: function(){
+          var gauge = L.DomUtil.create('div');
+          gauge.style.width = '200px';
+          gauge.style.background = 'rgba(255,255,255,0.5)';
+          gauge.style.textAlign = 'left';
+          mymap.on('zoomstart zoom zoomend', function(ev){
+            gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
+          })
+          return gauge;
+        }
+      });
+      (new ZoomViewer).addTo(mymap);
+      mymap.setView([0,0], 1);
+
+
+        </script>
+      </div>
+
+    </div>
+
+    <div id="copyright">
+      <script>
+        // Create a Date object containing today's date.
+        var today = new Date();
+
+        // Get the current four-digit year.
+        var year = today.getFullYear();
+
+        // Display the copyright notice.
+        document.write("Copyright &copy; " + year);
       </script>
-     </div>
+    </div>
 
-</div>
-</script>
-</p>
-</div>
+  </div>
 </body>
-<div id="copyright">
-<script>
-// Copyright at bottom of the page
-var today = new Date();
-// Date on Copyright
-var year = today.getFullYear();
-// year of copyright
-document.writeln("Copyright &copy; " + year);
-</script>
 </html>
