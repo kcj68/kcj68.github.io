@@ -35,20 +35,20 @@ Texas Parks and Wildlife's Landscape Ecology program is great."]
 ];
 function webmap_table()
 {
-document.write("<table width=100%>");
-for (var row=0; row < webmaps.length; row++)
-{
-document.write("<tr>");
-for (var column=0; column < webmaps[0].length; column++)
-{
-document.write("<td>" + webmaps[row][column] + "</td>");
+  document.write("<table width=100%>");
+  for (var row=0; row < webmaps.length; row++)
+  {
+    document.write("<tr>");
+    for (var column=0; column < webmaps[0].length; column++)
+    {
+      document.write("<td>" + webmaps[row][column] + "</td>");
+    }
+    document.write("</tr>");
+  }
+  document.write("</table>");
+  return "";
 }
-document.write("</tr>");
-}
-document.write("</table>");
-return "";
-}
-const reviews = [
+/*const reviews = [
   {
     name: "Oil Spill Toolkit",
     url: "https://www.glo.texas.gov",
@@ -64,4 +64,4 @@ const reviews = [
     description:
       "The Texas Parks and Wildlife's Landscape Ecology program is great."
   }
-];
+];*/
