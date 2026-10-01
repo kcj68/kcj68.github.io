@@ -56,8 +56,10 @@
   document.write(webmap_table("javascript/external.js/external.js"));
   </script>
 <h3>Geocoding Map</h3>
+<script src="javascript/secret_keys.js"></script>
  <br>
   <div id="mapid" style="width: 600px; height: 400px; margin: auto; bottom: 30px;">
+
      <script>
       var mymap = L.map('mapid').setView([51.505, -0.09], 13);
        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}',
