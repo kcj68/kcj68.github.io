@@ -59,3 +59,5 @@ function webmap_table()
     }
     document.write("</table>");
     return "";
+
+}
