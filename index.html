@@ -62,15 +62,6 @@ geocoder/dist/Control.Geocoder.css" />
       <br>
       <div id="mapid" style="width: 600px; height: 400px; margin: auto; bottom: 30px;">
         <script>
-        var geocoder = L.Control.geocoder({
-          defaultMarkGeocode: false,
-          geocoder: new L.Control.Geocoder.Nominatim()
-        }).on('markgeocode', function(e) {
-        var bbox = e.geocode.bbox;
-        var poly = L.polygon([
-          bbox.getSouthEast(),
-          bbox.getNorthEast(),
-          bbox.getNorthWest(),
         var mymap = L.map('mapid');
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {maxZoom: 18, id: 'mapbox/dark-v10', accessToken: mapbox_access_token}).addTo(mymap);
 
