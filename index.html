@@ -75,7 +75,7 @@ geocoder/dist/Control.Geocoder.css" />
         var marker = L.marker([40.334245, 116.477652]).addTo(mymap);
         var circle = L.circle([40.334245, 116.477652], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
         marker.bindPopup("<b>Hello world!</b><br>This is the Great Wall Of China.").openPopup();
-        circle.bindPopup(<img src=images/Taj.jpg width=150px height=150px />);
+        circle.bindPopup("Greal Wall of China");
         marker.on('click', function(e){ mymap.setView(e.latlng, 14);})
         circle.on('click', function(e){ mymap.setView(e.latlng, 13);})
         var marker = L.marker([30.328611, 35.441944]).addTo(mymap);
