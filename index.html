@@ -65,10 +65,35 @@ geocoder/dist/Control.Geocoder.css" />
         var mymap = L.map('mapid');
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {maxZoom: 18, id: 'mapbox/dark-v10', accessToken: mapbox_access_token}).addTo(mymap);
 
-        var marker = L.marker([51.5, -0.09]).addTo(mymap);
-        var circle = L.circle([51.508, -0.11], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
-        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-        circle.bindPopup("I am a circle.");
+
+        var marker = L.marker([27.174961, 78.042385]).addTo(mymap);
+        var circle = L.circle([27.174961, 78.042385], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is the Taj Mahal").openPopup();
+        circle.bindPopup("Taj Mahal");
+        var marker = L.marker([40.334245, 116.477652]).addTo(mymap);
+        var circle = L.circle([40.334245, 116.477652], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is the Great Wall Of China.").openPopup();
+        circle.bindPopup("The Great Wall of China.");
+        var marker = L.marker([30.328611, 35.441944]).addTo(mymap);
+        var circle = L.circle([30.328611, 35.441944], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is Petra.").openPopup();
+        circle.bindPopup("Petra.");
+        var marker = L.marker([-22.951389, -43.2108334]).addTo(mymap);
+        var circle = L.circle([-22.951389, -43.2108334], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is Christ the Redeemer.").openPopup();
+        circle.bindPopup("Christ the Redeemer.");
+        var marker = L.marker([-13.163056, -72.545556]).addTo(mymap);
+        var circle = L.circle([-13.163056, -72.545556], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is Machu Picchu.").openPopup();
+        circle.bindPopup("Machu Picchu.");
+        var marker = L.marker([20.682778, -88.569167]).addTo(mymap);
+        var circle = L.circle([20.682778, -88.569167], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is Chichen Itza.").openPopup();
+        circle.bindPopup("Chichen Itza.");
+        var marker = L.marker([41.890169, 12.492269]).addTo(mymap);
+        var circle = L.circle([41.890169, 12.492269], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+        marker.bindPopup("<b>Hello world!</b><br>This is the Roman Colosseum.").openPopup();
+        circle.bindPopup("The Roman Colosseum.");
         marker.on('click', function(e){ mymap.setView(e.latlng, 14);})
         circle.on('click', function(e){ mymap.setView(e.latlng, 13);})
         var ZoomViewer = L.Control.extend({ onAdd: function(){
