@@ -78,7 +78,7 @@ geocoder/dist/Control.Geocoder.css" />
           gauge.style.textAlign = 'left';
           mymap.on('zoomstart zoom zoomend', function(ev){
             gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
-var marker = L.marker([27.174961, 78.042385]).addTo(mymap);
+/*var marker = L.marker([27.174961, 78.042385]).addTo(mymap);
 var circle = L.circle([27.174961, 78.042385], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
 marker.bindPopup("<b>Hello world!</b><br>This is the Taj Mahal").openPopup();
 circle.bindPopup("Taj Mahal");
@@ -174,9 +174,9 @@ var ZoomViewer = L.Control.extend({ onAdd: function(){
   gauge.style.background = 'rgba(255,255,255,0.5)';
   gauge.style.textAlign = 'left';
   mymap.on('zoomstart zoom zoomend', function(ev){
-    gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
+    gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();*/
 
-  }}}}}}})))))))
+  })
           return gauge;
         }
       });
