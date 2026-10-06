@@ -161,7 +161,7 @@ var ZoomViewer = L.Control.extend({ onAdd: function(){
   gauge.style.textAlign = 'left';
   mymap.on('zoomstart zoom zoomend', function(ev){
     gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
-    
+
 var marker = L.marker([41.890169, 12.492269]).addTo(mymap);
 var circle = L.circle([41.890169, 12.492269], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
 marker.bindPopup("<b>Hello world!</b><br>This is the Roman Colosseum.").openPopup();
@@ -176,7 +176,7 @@ var ZoomViewer = L.Control.extend({ onAdd: function(){
   mymap.on('zoomstart zoom zoomend', function(ev){
     gauge.innerHTML = 'Zoom level: ' + mymap.getZoom();
 
-          })
+  }}}}}}})))))))
           return gauge;
         }
       });
