@@ -1,0 +1,16 @@
+#navMenu {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  font-family: Arial, sans-serif;
+}
+#navMenu select {
+  font-size: 14px;
+  padding: 4px;
+}
