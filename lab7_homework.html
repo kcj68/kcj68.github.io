@@ -31,19 +31,19 @@
       height: 100%;
       width: 100%;}
     </style>
-    <script>
-      require(["esri/Map", "esri/views/MapView"], (Map, MapView) => {
-         const map = new Map({
-           basemap: "dark-gray-vector",
-          });
-          const view = new MapView ({
-            container: "viewDiv",
-            map: map,
-            zoom: 5,
-            center: [-83.114, 36.921]
-           });
-          });
-        </script>
+    <div id="navMenu">
+      <label for="pageSelect"><b>Go to: </b></label>
+      <select id="pageSelect"
+              onchange="if (this.value) { window.open(this.value, '_blank'); this.selectedIndex = 0; }">
+        <option value="">Select a page...</option>
+        <option value="simple_mapping.html">Simple Mapping</option>
+        <option value="dynamic_layers.html">Dynamic Layers</option>
+        <option value="tile_layer.html">Tile Layer</option>
+        <option value="on_event.html">On Event</option>
+        <option value="basemap_gallery.html">Basemap Gallery</option>
+        <option value="query_task.html">Query Task</option>
+      </select>
+    </div>
       </head>
       <script>
     var pageSelect = document.getElementById("pageSelect");
