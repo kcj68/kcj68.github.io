@@ -46,21 +46,25 @@
         </script>
       </head>
       <script>
-  var pageSelect = document.getElementById("pageSelect");
+    var pageSelect = document.getElementById("pageSelect");
 
-  // Highlight the current page in the dropdown
-  var currentPage = window.location.pathname.split("/").pop();
-  for (var i = 0; i < pageSelect.options.length; i++) {
-    if (pageSelect.options[i].value === currentPage) {
-      pageSelect.selectedIndex = i;
+    // Highlight the current page in the dropdown
+    var currentPage = window.location.pathname.split("/").pop();
+    function selectCurrent() {
+      for (var i = 0; i < pageSelect.options.length; i++) {
+        if (pageSelect.options[i].value === currentPage) {
+          pageSelect.selectedIndex = i;
+        }
+      }
     }
-  }
+    selectCurrent();
 
-  // Navigate when a new page is chosen
-  pageSelect.addEventListener("change", function () {
-    window.location.href = this.value;
-  });
-</script>
+    // Open the chosen page in a new window/tab
+    pageSelect.addEventListener("change", function () {
+      window.open(this.value, "_blank");
+      selectCurrent(); // reset the dropdown to the page you're still on
+    });
+  </script>
       <body>
         <div id="viewDiv"></div>
         <div id="navMenu">
