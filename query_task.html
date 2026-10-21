@@ -133,9 +133,12 @@
          }
        }
      ],
-     content: "<b>Population:" + "</b> {Population} " + "<br><b>Households:</b> {Household}" + "<br><b>Latitude:</b>
-     {Latitude}" + "<br><b>Longitude:</b> {Longitude}"
+     content: "<b>Population:" + "</b> {Population} " +
+     "<br><b>Households:</b> {Household}" +
+     "<br><b>Latitude:</b> {Latitude}" +
+     "<br><b>Longitude:</b> {Longitude}"
    };
+   map.add(resultsLayer);
    var resultsLayer = new GraphicsLayer();
    var qTask = new QueryTask({ url: popUrl });
    var params = new Query({ returnGeometry: true, outFields: ["*"] });
