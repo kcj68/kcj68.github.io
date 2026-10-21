@@ -22,7 +22,15 @@
 #navMenu select {
   font-size: 14px;
   padding: 4px;
+}#navMenu summary { cursor: pointer; font-size: 14px; }
+#navMenu a {
+  display: block;
+  padding: 5px 4px;
+  color: #0b5ea8;
+  text-decoration: none;
+  font-size: 14px;
 }
+#navMenu a:hover { background: #eee; }
 </style>
   <style>
     html, body, #viewDiv {
@@ -46,23 +54,17 @@
         </script>
       </head>
       <script>
-    var pageSelect = document.getElementById("pageSelect");
-
-    // Highlight the current page in the dropdown
-    var currentPage = window.location.pathname.split("/").pop();
-    function selectCurrent() {
-      for (var i = 0; i < pageSelect.options.length; i++) {
-        if (pageSelect.options[i].value === currentPage) {
-          pageSelect.selectedIndex = i;
-        }
-      }
-    }
-    selectCurrent();
-
-    // Open the chosen page in a new window/tab
-    pageSelect.addEventListener("change", function () {
-      window.open(this.value, "_blank");
-      selectCurrent(); // reset the dropdown to the page you're still on
+      <div id="navMenu">
+    <details>
+      <summary><b>Go to page ▾</b></summary>
+      <a href="simple_mapping.html" target="_blank">Simple Mapping</a>
+      <a href="dynamic_layers.html" target="_blank">Dynamic Layers</a>
+      <a href="tile_layer.html" target="_blank">Tile Layer</a>
+      <a href="on_event.html" target="_blank">On Event</a>
+      <a href="basemap_gallery.html" target="_blank">Basemap Gallery</a>
+      <a href="query_task.html" target="_blank">Query Task</a>
+    </details>
+  </div>
     });
   </script>
       <body>
