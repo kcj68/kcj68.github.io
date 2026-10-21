@@ -7,6 +7,24 @@
   <link rel = "stylesheet" href = "https://js.arcgis.com/4.21/esri/themes/light/main.css"/>
   <script src = "https://js.arcgis.com/4.21/"> </script>
   <style>
+  #navMenu {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  font-family: Arial, sans-serif;
+}
+#navMenu select {
+  font-size: 14px;
+  padding: 4px;
+}
+</style>
+  <style>
     html, body, #viewDiv {
       padding: 0;
       margin: 0;
@@ -27,7 +45,34 @@
           });
         </script>
       </head>
+      <script>
+  var pageSelect = document.getElementById("pageSelect");
+
+  // Highlight the current page in the dropdown
+  var currentPage = window.location.pathname.split("/").pop();
+  for (var i = 0; i < pageSelect.options.length; i++) {
+    if (pageSelect.options[i].value === currentPage) {
+      pageSelect.selectedIndex = i;
+    }
+  }
+
+  // Navigate when a new page is chosen
+  pageSelect.addEventListener("change", function () {
+    window.location.href = this.value;
+  });
+</script>
       <body>
         <div id="viewDiv"></div>
+        <div id="navMenu">
+          <label for="pageSelect"><b>Go to: </b></label>
+          <select id="pageSelect">
+            <option value="simple_mapping.html">Simple Mapping</option>
+            <option value="dynamic_layers.html">Dynamic Layers</option>
+            <option value="tile_layer.html">Tile Layer</option>
+            <option value="on_event.html">On Event</option>
+            <option value="basemap_gallery.html">Basemap Gallery</option>
+            <option value="query_task.html">Query Task</option>
+          </select>
+        </div>
       </body>
       </html>
