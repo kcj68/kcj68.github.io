@@ -2,54 +2,49 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <title> Lab 7 Homework </title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
-  <style>
 
-  #navMenu {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 99;
-    background: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
-    font-family: Arial, sans-serif;
-    min-width: 160px;
-  }
-  #navMenu summary {
-    cursor: pointer;
-    font-size: 14px;
-  }
-  #navMenu a {
-    display: block;
-    padding: 5px 4px;
-    color: #0b5ea8;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  #navMenu a:hover {
-    background: #eee;
-  }
+  <!-- ArcGIS Maps SDK for JavaScript -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.30/"></script>
+
+  <style>
+    #navMenu {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+      background: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      font-family: Arial, sans-serif;
+      min-width: 160px;
+    }
+    #navMenu summary { cursor: pointer; font-size: 14px; }
+    #navMenu a {
+      display: block;
+      padding: 5px 4px;
+      color: #0b5ea8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    #navMenu a:hover { background: #eee; }
 
     html, body, #viewDiv {
       padding: 0;
       margin: 0;
       height: 100%;
-      width: 100%;}
-    </style>
-    <script>
+      width: 100%;
+    }
+  </style>
+
+  <script>
     require(["esri/Map", "esri/views/MapView", "esri/layers/TileLayer", "esri/layers/MapImageLayer", "esri/widgets/BasemapGallery"],
-    function
-    (Map, MapView, TileLayer, MapImageLayer, BasemapGallery) {
+    function (Map, MapView, TileLayer, MapImageLayer, BasemapGallery) {
+
       var CitiesRenderer = {
         type: "simple",
         symbol: {
@@ -57,68 +52,64 @@
           size: 3,
           color: "red",
           style: "circle",
-          outline:{
-            width: 1,
-            color: "red"
-           }
-         },
-         label: "Cities"
-       };
+          outline: { width: 1, color: "red" }
+        },
+        label: "Cities"
+      };
 
-       const riversAnnotation = L.esri.dynamicMapLayer({
-         url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/MapServer",
-         opacity: 1
-       }).addTo(map);
+      var CitiesLayer = new MapImageLayer({
+        url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
+        sublayers: [{
+          id: 0,
+          renderer: CitiesRenderer,
+          opacity: 0.4
+        }]
+      });
 
-       var CitiesLayer = new MapImageLayer({
-         url:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
-         sublayers: [{
-           id: 0,
-           renderer: CitiesRenderer,
-           opacity: 0.4
-         }]
-       });
+      var TransportationLayer = new TileLayer({
+        url: "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer"
+      });
 
-       var TransportationLayer = new TileLayer({
-         url: "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer"
-        });
-        var map = new Map({
-          basemap: "oceans",
-          layers: [TransportationLayer, CitiesLayer]
-        });
-        var view = new MapView({
-          container: "viewDiv",
-          map: map,
-          zoom: 10,
-          center: [-118.2095, 34.0866]
-         });
+      // New layer: Rivers Annotation
+      var RiversAnnotationLayer = new MapImageLayer({
+        url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/MapServer"
+      });
 
-         var basemapGallery = new BasemapGallery({
-           view: view });
-         view.ui.add(basemapGallery, {position: "top-right"});
+      var map = new Map({
+        basemap: "oceans",
+        layers: [TransportationLayer, CitiesLayer, RiversAnnotationLayer]
+      });
 
-         view.on("click",eventHandler);
-         function eventHandler(event){
-           console.log("You just triggered a 'click' event!"); alert("You just triggered a 'click' event!");
-        }
-        });
-        </script>
-      </head>
-      <body>
-        <div id="navMenu">
-  <details>
-    <summary><b>Go to page ▾</b></summary>
-    <a href="simple_mapping.html" target="_blank" rel="noopener">Simple Mapping</a>
-    <a href="dynamic_layers.html" target="_blank" rel="noopener">Dynamic Layers</a>
-    <a href="tile_layer.html" target="_blank" rel="noopener">Tile Layer</a>
-    <a href="on_event.html" target="_blank" rel="noopener">On Event</a>
-    <a href="basemap_gallery.html" target="_blank" rel="noopener">Basemap Gallery</a>
-    <a href="query_task.html" target="_blank" rel="noopener">Query Task</a>
-  </details>
-</div>
-        <div id="viewDiv"></div>
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 10,
+        center: [-118.2095, 34.0866]
+      });
 
+      var basemapGallery = new BasemapGallery({ view: view });
+      view.ui.add(basemapGallery, { position: "top-right" });
 
-
-      </body>
-      </html>
+      view.on("click", eventHandler);
+      function eventHandler(event) {
+        console.log("You just triggered a 'click' event!");
+        alert("You just triggered a 'click' event!");
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="navMenu">
+    <details>
+      <summary><b>Go to page ▾</b></summary>
+      <a href="simple_mapping.html" target="_blank" rel="noopener">Simple Mapping</a>
+      <a href="dynamic_layers.html" target="_blank" rel="noopener">Dynamic Layers</a>
+      <a href="tile_layer.html" target="_blank" rel="noopener">Tile Layer</a>
+      <a href="on_event.html" target="_blank" rel="noopener">On Event</a>
+      <a href="basemap_gallery.html" target="_blank" rel="noopener">Basemap Gallery</a>
+      <a href="query_task.html" target="_blank" rel="noopener">Query Task</a>
+    </details>
+  </div>
+  <div id="viewDiv"></div>
+</body>
+</html>
