@@ -61,8 +61,8 @@
          label: "Cities"
        };
 
-       var CitiesLayer = new MapImageLayer({
-         url:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
+       var RiversLayer = new MapImageLayer({
+         url:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/MapServer",
          sublayers: [{
            id: 0,
            renderer: CitiesRenderer,
@@ -108,5 +108,8 @@
   </details>
 </div>
         <div id="viewDiv"></div>
+
+
+
       </body>
       </html>
