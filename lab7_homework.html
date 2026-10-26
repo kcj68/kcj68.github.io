@@ -4,8 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content = "initial-scale=1, maximum-scale=1, user-scalable=no"/>
   <title> Lab 7 Homework </title>
-  <link rel = "stylesheet" href = "https://js.arcgis.com/4.21/esri/themes/light/main.css"/>
-  <script src = "https://js.arcgis.com/4.21/"> </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
   <style>
 
   #navMenu {
@@ -60,6 +64,11 @@
          },
          label: "Cities"
        };
+
+       const riversAnnotation = L.esri.dynamicMapLayer({
+         url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/RiversAnnotation/MapServer",
+         opacity: 1
+       }).addTo(map);
 
        var CitiesLayer = new MapImageLayer({
          url:"https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer",
